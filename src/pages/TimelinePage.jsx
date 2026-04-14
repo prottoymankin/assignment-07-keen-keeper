@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { TimelineContext } from "../context/TimelineContext";
 import TimelineCard from "../components/TimelinePage/TimelineCard";
+import NoDataMessage from "../components/shared/NoDataMessage";
 
 const TimelinePage = () => {
   const { timelines } = useContext(TimelineContext);
@@ -81,16 +82,23 @@ const TimelinePage = () => {
           </div>
         </header>
 
-        <div className="space-y-6">
-          {
-            processedData.map((timeline, index) => (
-              <TimelineCard
-                key={index}
-                timeline={timeline}
-              />
-            ))
-          }
-        </div>
+        {
+          timelines.length === 0 ? (
+            <NoDataMessage />
+          ) : (
+            <div className="space-y-6">
+              {
+                processedData.map((timeline, index) => (
+                  <TimelineCard
+                    key={index}
+                    timeline={timeline}
+                  />
+                ))
+              }
+            </div>
+          )
+        }
+
       </div>
     </section>
   );
