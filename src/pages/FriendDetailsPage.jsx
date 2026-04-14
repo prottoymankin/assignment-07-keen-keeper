@@ -45,7 +45,7 @@ const FriendDetailsPage = () => {
           <div className="lg:col-span-8 space-y-6">
             <StatCards selectedFriend={selectedFriend} />
             <RelationshipGoal days={selectedFriend.goal} />
-            <QuickCheckIn />
+            <QuickCheckIn selectedFriend={selectedFriend} />
           </div>
         </div>
       )}
