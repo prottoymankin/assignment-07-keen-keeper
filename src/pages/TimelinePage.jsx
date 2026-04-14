@@ -4,26 +4,53 @@ import TimelineCard from "../components/TimelinePage/TimelineCard";
 
 const TimelinePage = () => {
   const { timelines } = useContext(TimelineContext);
-  const [sortType, setSortType] = useState("Default");
-  const [fillteredTimelines, setFilteredTimelines] = useState(timelines);
+  const [sortType, setSortType] = useState('');
+  const [filterType, setFilterType] = useState('');
+  const [processedData, setProcessedData] = useState(timelines);
 
   const handleSortType = (e) => {
     setSortType(e.target.value);
   }
 
+  const handleFilterType = (e) => {
+    setFilterType(e.target.value);
+  }
+
+  // For Sorting
   useEffect(() => {
     if (sortType === 'Oldest') {
-      setFilteredTimelines(prev => (
+      setProcessedData(prev => (
         [...prev].sort((a, b) => new Date(a.callingDate) - new Date(b.callingDate))
       ));
     } else if (sortType === 'Newest') {
-      setFilteredTimelines(prev => (
+      setProcessedData(prev => (
         [...prev].sort((a, b) => new Date(b.callingDate) - new Date(a.callingDate))
       ));
     } else {
-      setFilteredTimelines(timelines);
+      setProcessedData(timelines);
     }
-  }, [sortType])
+  }, [sortType]);
+
+  useEffect(() => {
+    if (filterType === 'Call') {
+      setProcessedData(timelines);
+      setProcessedData(prev => (
+        prev.filter(t => t.type === 'Call')
+      ))
+    } else if (filterType === 'Text') {
+      setProcessedData(timelines);
+      setProcessedData(prev => (
+        prev.filter(t => t.type === 'Text')
+      ))
+    } else if (filterType === 'Video') {
+      setProcessedData(timelines);
+      setProcessedData(prev => (
+        prev.filter(t => t.type === 'Video')
+      ))
+    } else {
+      setProcessedData(timelines);
+    }
+  }, [filterType]);
 
   return (
     <section className="bg-[#F8FAFC] grow px-4 py-10 lg:py-20 w-full">
@@ -31,21 +58,32 @@ const TimelinePage = () => {
         <header className="space-y-6">
           <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#1F2937]">Timeline</h2>
 
-          <select 
-            defaultValue={sortType} 
-            className="select"
-            name="filterType"
-            onChange={handleSortType}
-          >
-            <option>Default</option>
-            <option>Oldest</option>
-            <option>Newest</option>
-          </select>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <select defaultValue='Filter by' className="select" onChange={handleFilterType}>
+              <option disabled={true}>Filter by</option>
+              <option>Default</option>
+              <option>Call</option>
+              <option>Text</option>
+              <option>Video</option>
+            </select>
+
+            <select 
+              defaultValue='Sort by' 
+              className="select"
+              name="filterType"
+              onChange={handleSortType}
+            >
+              <option disabled={true}>Sort by</option>
+              <option>Default</option>
+              <option>Oldest</option>
+              <option>Newest</option>
+            </select>
+          </div>
         </header>
 
         <div className="space-y-6">
           {
-            fillteredTimelines.map((timeline, index) => (
+            processedData.map((timeline, index) => (
               <TimelineCard
                 key={index}
                 timeline={timeline}
