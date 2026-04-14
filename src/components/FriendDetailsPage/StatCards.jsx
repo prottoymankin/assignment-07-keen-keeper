@@ -3,7 +3,7 @@ import StatCard from "./StatCard";
 
 const StatCards = ({selectedFriend}) => {
   return (
-    <div className="grid grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
       <StatCard
         title={selectedFriend.days_since_contact}
         text='Days Since Contact'

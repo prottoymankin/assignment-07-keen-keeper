@@ -1,7 +1,7 @@
 const StatCard = ({title, text}) => {
   return (
     <div 
-      className="bg-white flex flex-col items-center justify-center gap-2 p-8 rounded-lg shadow-sm"
+      className="bg-white flex flex-col items-center justify-center gap-2 p-8 rounded-lg shadow-sm text-center"
     >
       <span className="font-semibold text-2xl text-[#244D3F]">
         {title}

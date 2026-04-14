@@ -16,15 +16,15 @@ const FriendDetailsPage = () => {
   const selectedFriend = friendsData.find(friend => friend.id === parseInt(id));
 
   return (
-    <section className="bg-[#F8FAFC] px-4 flex items-center justify-center min-h-[90vh]">
+    <section className="bg-[#F8FAFC] px-4 py-10 lg:py-20">
       { isLoading ? (
         <Loader />
       ) : (
-        <div className="grid grid-cols-12 gap-6 max-w-277.5 mx-auto">
-          <div className="flex flex-col gap-4 col-span-4">
+        <div className="grid lg:grid-cols-12 gap-6 max-w-277.5 mx-auto">
+          <div className="flex flex-col gap-4 lg:col-span-4">
             <ProfileCard selectedFriend={selectedFriend} />
 
-            <div className="flex flex-col gap-2">
+            <div className="flex justify-center flex-wrap lg:flex-col gap-2">
               <button className="btn">
                 <HiOutlineBellSnooze />
                 <span>Snooze 2 Weeks</span>
@@ -42,7 +42,7 @@ const FriendDetailsPage = () => {
             </div>
           </div>
 
-          <div className="col-span-8 space-y-6">
+          <div className="lg:col-span-8 space-y-6">
             <StatCards selectedFriend={selectedFriend} />
             <RelationshipGoal days={selectedFriend.goal} />
             <QuickCheckIn />
