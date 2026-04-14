@@ -1,8 +1,13 @@
+import { Link } from "react-router";
+
 const FriendCard = ({ friendData }) => {
   const { id, name, picture, days_since_contact, status, tags } = friendData;
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm space-y-3 text-center">
+    <Link 
+      to={`/friend-details/${id}`}
+      className="bg-white p-6 rounded-lg shadow-sm space-y-3 text-center"
+    >
       <div className="h-20 w-20 mx-auto overflow-hidden rounded-full">
         <img 
           src={picture} 
@@ -36,7 +41,7 @@ const FriendCard = ({ friendData }) => {
           {status}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

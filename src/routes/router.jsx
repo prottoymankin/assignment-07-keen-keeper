@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import TimelinePage from "../pages/TimelinePage";
 import StatsPage from "../pages/StatsPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import FriendDetailsPage from "../pages/FriendDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -12,7 +13,8 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: HomePage },
       { path: 'timeline', Component: TimelinePage },
-      { path: 'stats', Component: StatsPage }
+      { path: 'stats', Component: StatsPage },
+      { path: 'friend-details/:id', Component: FriendDetailsPage }
     ],
     errorElement: <NotFoundPage />
   }
