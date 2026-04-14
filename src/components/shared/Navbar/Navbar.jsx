@@ -1,9 +1,9 @@
 import { Link } from 'react-router';
-import logo from '../../assets/logo.png';
+import logo from '../../../assets/logo.png';
 import { RiHome2Line, RiMenu2Line } from 'react-icons/ri';
 import { CiClock2 } from 'react-icons/ci';
 import { GoGraph } from 'react-icons/go';
-import NavigationLink from '../NavigationLink';
+import NavigationLink from './NavigationLink';
 
 const Navbar = () => {
   const navLinks = [

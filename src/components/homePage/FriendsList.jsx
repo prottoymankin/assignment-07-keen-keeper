@@ -1,4 +1,5 @@
 import useFriendsData from "../../hooks/useFriendsData";
+import Loader from "../shared/Loader";
 import FriendCards from "./FriendCards";
 
 const FriendsList = () => {
@@ -11,7 +12,15 @@ const FriendsList = () => {
         Your Friends
       </h3>
 
-      <FriendCards friendsData={friendsData} />
+      {
+        isLoading ? (
+          <Loader />
+        ) : (
+          <FriendCards 
+            friendsData={friendsData}
+          />
+        )
+      }
     </section>
   );
 };
