@@ -1,6 +1,7 @@
 import callIcon from '../../assets/call.png';
 import textIcon from '../../assets/text.png';
 import videoIcon from '../../assets/video.png';
+import { formatDate } from '../../utils/dateUtil';
 
 const TimelineCard = ({ timeline }) => {
   const { name, type, callingDate } = timeline;
@@ -21,7 +22,7 @@ const TimelineCard = ({ timeline }) => {
           <span className='font-medium text-xl text-[#244D3F]'>{type}</span> with {name}
         </p>
 
-        <p className='font-medium text-gray-500'>{callingDate}</p>
+        <p className='font-medium text-gray-500'>{formatDate(callingDate)}</p>
       </div>
     </div>
   );
