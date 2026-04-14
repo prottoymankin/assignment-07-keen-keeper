@@ -1,7 +1,12 @@
 import { FaPlus } from "react-icons/fa";
 import SummeryCard from "./SummeryCard";
+import useFriendsData from "../../hooks/useFriendsData";
 
 const Banner = () => {
+  const { friendsData } = useFriendsData();
+  const onTrackFriends = friendsData.filter(friend => friend.status === 'on-track');
+  const overdueFriends = friendsData.filter(friend => friend.status === 'overdue');
+
   return (
     <section 
       className="border-b border-b-gray-200 max-w-277.5 mb-10 mx-auto pb-10 pt-10 md:pt-20 px-4 space-y-10 text-center"
@@ -23,17 +28,17 @@ const Banner = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <SummeryCard
-          count={10}
+          count={friendsData.length}
           title='Total Friends'
         />
 
         <SummeryCard
-          count={3}
+          count={onTrackFriends.length}
           title='On Track'
         />
 
         <SummeryCard
-          count={6}
+          count={overdueFriends.length}
           title='Need Attention'
         />
 
