@@ -12,7 +12,7 @@ const Banner = () => {
       className="border-b border-b-gray-200 max-w-277.5 mb-10 mx-auto pb-10 pt-10 md:pt-20 px-4 space-y-10 text-center"
     >
       <div>
-        <h1 className="font-bold text-5xl text-[#1F2937]">
+        <h1 className="font-bold text-5xl text-[#1F2937] leading-[1.2]">
           Friends to keep close in your life
         </h1>
         
