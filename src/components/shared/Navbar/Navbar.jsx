@@ -4,8 +4,12 @@ import { RiHome2Line, RiMenu2Line } from 'react-icons/ri';
 import { CiClock2 } from 'react-icons/ci';
 import { GoGraph } from 'react-icons/go';
 import NavigationLink from './NavigationLink';
+import { useState } from 'react';
+import Sidebar from './Sidebar';
 
 const Navbar = () => {
+  const [showSidebar, setShowSidebar] = useState(false);
+
   const navLinks = [
     { to: '/', title: 'Home', icon: <RiHome2Line /> },
     { to: '/timeline', title: 'Timeline', icon: <CiClock2 /> },
@@ -15,8 +19,17 @@ const Navbar = () => {
   return (
     <header className="border-b border-b-gray-200 p-4">
       <nav className="flex items-center justify-between max-w-360 mx-auto">
+        
+        <Sidebar
+          showSidebar={showSidebar}
+          setShowSidebar={setShowSidebar}
+        />
+
         <div className='flex items-center gap-3'>
-          <button className='btn md:hidden'>
+          <button 
+            onClick={() => setShowSidebar(true)}
+            className='btn md:hidden'
+          >
             <RiMenu2Line />
           </button>
 
