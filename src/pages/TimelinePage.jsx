@@ -56,23 +56,25 @@ const TimelinePage = () => {
     <section className="bg-[#F8FAFC] grow px-4 py-10 lg:py-20 w-full">
       <div className="max-w-277.5 mx-auto space-y-6">
         <header className="space-y-6">
-          <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#1F2937]">Timeline</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-[#1F2937]">Timeline</h2>
 
-          <label className="input">
-            <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <g
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                strokeWidth="2.5"
-                fill="none"
-                stroke="currentColor"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.3-4.3"></path>
-              </g>
-            </svg>
-            <input type="search" defaultValue={searchedText} onChange={handleTimelineSearching} placeholder="Search" />
-          </label>
+            <label className="input">
+              <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <g
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2.5"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.3-4.3"></path>
+                </g>
+              </svg>
+              <input type="search" defaultValue={searchedText} onChange={handleTimelineSearching} placeholder="Search" />
+            </label>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <select defaultValue='Filter by' className="select" onChange={handleTimelineFiltering}>
@@ -98,7 +100,7 @@ const TimelinePage = () => {
         </header>
 
         {
-          timelines.length === 0 ? (
+          processedData.length === 0 ? (
             <NoDataMessage />
           ) : (
             <div className="space-y-6">
